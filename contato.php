@@ -7,7 +7,7 @@ include 'includes/header.php';
     <div class="container">
         
         <!-- Cabeçalho da Seção com Animação -->
-        <div class="section-header animated-item">
+        <div class="section-header" data-aos="fade-up" data-aos-delay="100">
             <span class="badge-tag">Atendimento Técnico</span>
             <h2>Entre em Contato</h2>
             <p class="hero-desc">Solicite seu orçamento para serviços topográficos e agronômicos ou tire suas dúvidas diretamente com nossa equipe especializada.</p>
@@ -19,7 +19,7 @@ include 'includes/header.php';
             <!-- Coluna da Esquerda: Cartões de Informação -->
             <div class="contact-info-cards">
                 
-                <div class="feature-card contact-card animated-item delay-1">
+                <div class="feature-card contact-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-num">WHATSAPP / TELEFONE</div>
                     <h3>Atendimento Direto</h3>
                     <p style="margin-bottom: 15px;">Fale diretamente com os nossos engenheiros:</p>
@@ -31,7 +31,7 @@ include 'includes/header.php';
                     </a>
                 </div>
 
-                <div class="feature-card contact-card animated-item delay-2">
+                <div class="feature-card contact-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-num">DADOS INSTITUCIONAIS</div>
                     <h3>Canais Oficiais</h3>
                     <p><strong>E-mail:</strong> landmensure@gmail.com</p>
@@ -43,7 +43,7 @@ include 'includes/header.php';
             </div>
 
             <!-- Coluna da Direita: Formulário Preenchendo Todo o Espaço -->
-            <div class="testimonial-form-container animated-item delay-3">
+            <div class="testimonial-form-container" data-aos="fade-up" data-aos-delay="400">
                 <h3 class="form-title">Solicite um Orçamento</h3>
                 
                 <form id="whatsappForm" class="testimonial-form" onsubmit="enviarMensagemWhatsApp(event)">
@@ -109,6 +109,20 @@ function enviarMensagemWhatsApp(event) {
 
     window.open(`https://wa.me/${numeroTelefone}?text=${textoMensagem}`, '_blank');
 }
+</script>
+
+<!-- Script de Inicialização Global do AOS -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if(typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50
+            });
+        }
+    });
 </script>
 
 <?php include 'includes/footer.php'; ?>
