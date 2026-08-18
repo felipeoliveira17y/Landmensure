@@ -1,74 +1,114 @@
-<?php include 'includes/header.php'; ?>
+<?php 
+$pageTitle = "Landmensure - Contato & Orçamento";
+include 'includes/header.php'; 
+?>
 
-<section class="hero-section">
+<main class="contact-section">
     <div class="container">
-        <span class="badge-tag" data-aos="fade-up" data-aos-delay="100">Atendimento Técnico</span>
-        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Entre em Contato</h1>
-        <p class="hero-desc" style="max-width: 800px;" data-aos="fade-up" data-aos-delay="300">
-            Solicite um orçamento para georreferenciamento, topografia ou consultoria agronômica. Nossa equipe técnica responderá o mais breve possível.
-        </p>
-    </div>
-</section>
+        
+        <!-- Cabeçalho da Seção com Animação -->
+        <div class="section-header animated-item">
+            <span class="badge-tag">Atendimento Técnico</span>
+            <h2>Entre em Contato</h2>
+            <p class="hero-desc">Solicite seu orçamento para serviços topográficos e agronômicos ou tire suas dúvidas diretamente com nossa equipe especializada.</p>
+        </div>
 
-<section class="contact-section" style="padding: 40px 0 80px 0;">
-    <div class="container">
-        <div class="cards-grid" style="grid-template-columns: 1fr 1.5fr; gap: 40px; align-items: start;">
+        <!-- Grid de Contato Expandido -->
+        <div class="contact-grid">
             
-            <!-- Informações Diretas de Contato -->
-            <div class="contact-info" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-card" style="margin-bottom: 20px;">
+            <!-- Coluna da Esquerda: Cartões de Informação -->
+            <div class="contact-info-cards">
+                
+                <div class="feature-card contact-card animated-item delay-1">
                     <div class="card-num">WHATSAPP / TELEFONE</div>
                     <h3>Atendimento Direto</h3>
-                    <p style="margin-bottom: 10px;">Fale diretamente com os nossos engenheiros:</p>
-                    <a href="https://wa.me/5588981197489" target="_blank" class="btn-primary" style="display: inline-block; text-align: center; text-decoration: none; margin-top: 10px;">
+                    <p style="margin-bottom: 15px;">Fale diretamente com os nossos engenheiros:</p>
+                    
+                    <a href="https://wa.me/5588981197489?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20servi%C3%A7os%20topogr%C3%A1ficos/agron%C3%B4micos." 
+                       target="_blank" 
+                       class="btn-primary btn-block">
                         Chamar no WhatsApp
                     </a>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card contact-card animated-item delay-2">
                     <div class="card-num">DADOS INSTITUCIONAIS</div>
                     <h3>Canais Oficiais</h3>
                     <p><strong>E-mail:</strong> landmensure@gmail.com</p>
                     <p><strong>Jonas Inácio:</strong> (88) 98119-7489</p>
-                    <p><strong>Cicero Araújo:</strong> (88) 98165-1794</p>
-                    <p><strong>Sede:</strong> Rua Maria Novais Miranda, 77, Bairro Sol Nascente, Porteiras - CE (CEP 63270-000).</p>
+                    <p><strong>Cícero Araújo:</strong> (88) 98165-1794</p>
+                    <p style="margin-top: 10px;"><strong>Sede:</strong> Rua Maria Novais Miranda, 77, Bairro Sol Nascente, Porteiras - CE (CEP 63270-000).</p>
                 </div>
+
             </div>
 
-            <!-- Formulário de Solicitacao de Orçamento -->
-            <div class="testimonial-form-container" data-aos="fade-up" data-aos-delay="200">
-                <h3 style="margin-bottom: 20px; font-family: var(--font-serif);">Solicite um Orçamento</h3>
+            <!-- Coluna da Direita: Formulário Preenchendo Todo o Espaço -->
+            <div class="testimonial-form-container animated-item delay-3">
+                <h3 class="form-title">Solicite um Orçamento</h3>
                 
-                <form action="processa-orcamento.php" method="POST" class="testimonial-form">
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <input type="text" name="nome" placeholder="Seu Nome Completo" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px;">
-                    </div>
+                <form id="whatsappForm" class="testimonial-form" onsubmit="enviarMensagemWhatsApp(event)">
                     
-                    <div class="form-group" style="margin-bottom: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                        <input type="email" name="email" placeholder="Seu E-mail" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px;">
-                        <input type="tel" name="telefone" placeholder="Telefone / WhatsApp" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px;">
+                    <div class="form-group">
+                        <input type="text" id="nome" class="custom-input" placeholder="Seu Nome Completo" required>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <select name="servico" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; background: #fff;" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="email" id="email" class="custom-input" placeholder="Seu E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="telefone" class="custom-input" placeholder="Telefone / WhatsApp" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="servico" class="custom-input" required>
                             <option value="" disabled selected>Selecione o Serviço Desejado</option>
-                            <option value="Georreferenciamento INCRA">Georreferenciamento de Imóvel Rural (INCRA)</option>
-                            <option value="Levantamento Planialtimétrico">Levantamento Planialtimétrico</option>
-                            <option value="Demarcação de Divisas">Demarcação e Retificação de Divisas</option>
-                            <option value="Outros">Outros Serviços / Consultoria</option>
+                            <option value="Levantamento Topográfico Cadastral">Levantamento Topográfico Cadastral</option>
+                            <option value="Georreferenciamento de Imóveis Rurais">Georreferenciamento de Imóveis Rurais</option>
+                            <option value="Desmembramento / Remembramento">Desmembramento / Remembramento</option>
+                            <option value="Projetos Agronômicos e de Crédito Rural">Projetos Agronômicos e de Crédito Rural</option>
+                            <option value="Outros Serviços">Outros Serviços</option>
                         </select>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 15px;">
-                        <textarea name="mensagem" rows="5" placeholder="Descreva a localização, tamanho da área (hectares) ou detalhes do serviço..." required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; resize: vertical;"></textarea>
+                    <div class="form-group form-group-textarea">
+                        <textarea id="mensagem" class="custom-input custom-textarea" placeholder="Descreva a localização, tamanho da área (hectares) ou detalhes do serviço..." required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer;">Enviar Mensagem</button>
+                    <button type="submit" class="btn-primary btn-block btn-whatsapp-custom">
+                        Enviar Solicitação via WhatsApp
+                    </button>
+                    
                 </form>
             </div>
 
         </div>
+
     </div>
-</section>
+</main>
+
+<script>
+function enviarMensagemWhatsApp(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
+    const servico = document.getElementById('servico').value;
+    const mensagem = document.getElementById('mensagem').value;
+
+    const numeroTelefone = "5588981197489";
+
+    const textoMensagem = `*NOVA SOLICITAÇÃO DE ORÇAMENTO - WEBSITE*%0A%0A` +
+        `*Nome:* ${encodeURIComponent(nome)}%0A` +
+        `*E-mail:* ${encodeURIComponent(email)}%0A` +
+        `*Telefone:* ${encodeURIComponent(telefone)}%0A` +
+        `*Serviço:* ${encodeURIComponent(servico)}%0A` +
+        `*Detalhes:* ${encodeURIComponent(mensagem)}`;
+
+    window.open(`https://wa.me/${numeroTelefone}?text=${textoMensagem}`, '_blank');
+}
+</script>
 
 <?php include 'includes/footer.php'; ?>

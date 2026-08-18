@@ -19,8 +19,8 @@
             </div>
             <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
                 <h4>Contato de Campo</h4>
-                <p><strong>Jonas:</strong> (88) 98119-7489</p>
-                <p><strong>Cicero:</strong> (88) 98165-1794</p>
+                <p><strong>Jonas Inácio:</strong> (88) 98119-7489</p>
+                <p><strong>Cicero Araújo:</strong> (88) 98165-1794</p>
                 <p><strong>E-mail:</strong> landmensure@gmail.com</p>
                 <p><strong>Atendimento:</strong> Seg. a Sex - 07:00 às 12:00 & 13:00 às 16:00</p>
             </div>
@@ -33,13 +33,26 @@
         </div>
     </footer>
 
-    <!-- JS da biblioteca AOS -->
+    <!-- JS da biblioteca AOS (Animações de Rolagem) -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
             duration: 800,
             once: true,
             offset: 80
+        });
+
+        // Script de Controle do Menu Mobile (Hambúrguer)
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    menuToggle.classList.toggle('open');
+                });
+            }
         });
     </script>
     <script src="js/script.js"></script>

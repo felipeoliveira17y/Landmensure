@@ -13,8 +13,8 @@
     <!-- CSS da biblioteca AOS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS Principal (Com cache bust) -->
+    <link rel="stylesheet" href="css/style.css?v=2.0">
     <link rel="icon" type="image/png" href="img/favicon.png?v=1">
 </head>
 <body>
@@ -46,6 +46,7 @@
             </nav>
 
             <div class="header-coords">
+                <span class="gps-dot"></span>
                 <span class="coord-label">LOC:</span>
                 <span class="coord-value">7°10'50.7"S 38°46'48.5"W</span>
             </div>
