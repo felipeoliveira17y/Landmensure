@@ -1,0 +1,632 @@
+/* ==========================================================================
+   LANDMENSURE - ESTILO TÉCNICO TOPOGRÁFICO ENVELHECIDO
+   ========================================================================== */
+
+:root {
+    /* Paleta Mapa Topográfico Envelhecido */
+    --bg-paper: #f3efe6;
+    --bg-paper-dark: #e8e2d3;
+    --text-primary: #2b2823;
+    --text-muted: #6e675c;
+    --border-contour: #d2c8b4;
+    --accent-copper: #a65828;
+    --accent-emerald: #395741;
+    --grid-line: rgba(166, 88, 40, 0.08);
+
+    /* Tipografias */
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Cinzel', serif;
+    --font-mono: 'Chivo Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-paper);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    background-image: 
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+    background-color: var(--bg-paper-dark);
+    border-bottom: 2px solid var(--border-contour);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.logo-mark svg {
+    color: var(--accent-copper);
+}
+
+.brand-title {
+    display: block;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+}
+
+.brand-subtitle {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent-copper);
+    letter-spacing: 1px;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--accent-copper);
+    border-bottom-color: var(--accent-copper);
+}
+
+.header-coords {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: rgba(43, 40, 35, 0.05);
+    padding: 6px 12px;
+    border: 1px solid var(--border-contour);
+    border-radius: 4px;
+}
+
+.coord-label {
+    color: var(--accent-copper);
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border-contour);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.badge-tag {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background-color: var(--accent-copper);
+    color: #fff;
+    padding: 4px 10px;
+    display: inline-block;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* Canvas & Contorno */
+.map-container {
+    background-color: #ede7d7;
+    border: 2px solid var(--border-contour);
+    padding: 15px;
+    position: relative;
+    box-shadow: 6px 6px 0px var(--border-contour);
+}
+
+.contour-canvas {
+    width: 100%;
+    height: 320px;
+    background-color: #f7f4eb;
+    border: 1px dashed var(--border-contour);
+    display: block;
+}
+
+.canvas-overlay-data {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: rgba(243, 239, 230, 0.9);
+    padding: 8px 12px;
+    border: 1px solid var(--border-contour);
+}
+
+/* Botões */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent-emerald);
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--accent-emerald);
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+/* Seções e Cards */
+.features-section {
+    padding: 60px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature-card {
+    background-color: var(--bg-paper-dark);
+    padding: 25px;
+    border: 1px solid var(--border-contour);
+    position: relative;
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background-color: var(--accent-copper);
+}
+
+.card-num {
+    font-family: var(--font-mono);
+    color: var(--accent-copper);
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--text-primary);
+    color: var(--bg-paper);
+    padding-top: 50px;
+    margin-top: 60px;
+    border-top: 3px solid var(--accent-copper);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-col h4 {
+    font-family: var(--font-mono);
+    color: var(--accent-copper);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col li {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    color: #c5beae;
+}
+
+.footer-desc {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #c5beae;
+}
+
+.footer-bottom {
+    background-color: #1a1815;
+    padding: 15px 0;
+    font-size: 0.75rem;
+    color: #8c8373;
+}
+
+.footer-bottom-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tech-badge {
+    font-family: var(--font-mono);
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 3px 8px;
+    border: 1px solid #3d372e;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero-grid, .cards-grid, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .header-coords {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   GALERIA DE CAMPO - FOTOS SOBRE A EMPRESA
+   ========================================================================== */
+
+.gallery-section {
+    padding: 50px 0 20px 0;
+}
+
+.field-gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.photo-card {
+    background-color: var(--bg-paper-dark);
+    border: 2px solid var(--border-contour);
+    padding: 12px;
+    box-shadow: 4px 4px 0px var(--border-contour);
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-3px);
+}
+
+.photo-wrapper {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    border: 1px solid var(--border-contour);
+}
+
+.photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: sepia(15%) contrast(105%); /* Leve tom vintage de mapa */
+    transition: filter 0.3s ease;
+}
+
+.photo-card:hover .photo-wrapper img {
+    filter: sepia(0%) contrast(100%);
+}
+
+/* Marca d'água técnica sobre a foto */
+.photo-overlay-tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    background: rgba(43, 40, 35, 0.85);
+    color: var(--bg-paper);
+    padding: 4px 8px;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.photo-caption {
+    padding: 15px 5px 5px 5px;
+}
+
+.photo-caption h4 {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.photo-caption p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Ajuste Responsivo para Celulares */
+@media (max-width: 768px) {
+    .field-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .photo-wrapper {
+        height: 260px;
+    }
+}
+
+/* ==========================================================================
+   ANIMAÇÕES DE ENTRADA SUAVE (PAGE LOAD) PARA TODOS OS ELEMENTOS
+   ========================================================================== */
+
+/* Keyframe de subida com opacidade */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes de pulso para o GPS do topo */
+@keyframes pulseGps {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* --------------------------------------------------------------------------
+   HEADER ANIMADO
+   -------------------------------------------------------------------------- */
+.brand-logo {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.main-nav ul li {
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.main-nav ul li:nth-child(1) { animation-delay: 0.15s; }
+.main-nav ul li:nth-child(2) { animation-delay: 0.25s; }
+
+.header-coords {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+}
+
+.coord-value {
+    display: inline-block;
+    animation: pulseGps 2s infinite ease-in-out;
+}
+
+/* --------------------------------------------------------------------------
+   HERO / BANNER PRINCIPAL ANIMADO (TEXTOS & MAPA)
+   -------------------------------------------------------------------------- */
+.badge-tag {
+    opacity: 0;
+    animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+.hero-title {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.hero-desc {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.btn-primary {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+.map-container {
+    opacity: 0;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+/* --------------------------------------------------------------------------
+   SEÇÃO DE RECURSOS / CARDS
+   -------------------------------------------------------------------------- */
+.section-header {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+}
+
+.feature-card {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cards-grid .feature-card:nth-child(1) { animation-delay: 0.5s; }
+.cards-grid .feature-card:nth-child(2) { animation-delay: 0.65s; }
+.cards-grid .feature-card:nth-child(3) { animation-delay: 0.8s; }
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   GALERIA DE FOTOS ("SOBRE A EMPRESA")
+   -------------------------------------------------------------------------- */
+.field-gallery-grid .photo-card {
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.field-gallery-grid .photo-card:nth-child(1) { animation-delay: 0.4s; }
+.field-gallery-grid .photo-card:nth-child(2) { animation-delay: 0.55s; }
+
+.photo-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0px var(--accent-copper);
+}
+
+.photo-wrapper img {
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.photo-card:hover .photo-wrapper img {
+    transform: scale(1.06);
+}
+
+/* --------------------------------------------------------------------------
+   EFEITO HOVER NO MENU
+   -------------------------------------------------------------------------- */
+.main-nav a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--accent-copper);
+    transition: width 0.3s ease-in-out;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+/* Estilização da Seção de Depoimentos */
+.testimonial-form input,
+.testimonial-form textarea {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-form input:focus,
+.testimonial-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-copper) !important;
+    box-shadow: 0 0 0 3px rgba(184, 115, 51, 0.2);
+}
+
+.testimonial-form-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Links do Menu com Atraso em Sequência */
+.main-nav ul li {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.main-nav ul li:nth-child(1) { animation-delay: 0.15s; }
+.main-nav ul li:nth-child(2) { animation-delay: 0.25s; }
+.main-nav ul li:nth-child(3) { animation-delay: 0.35s; }
+.main-nav ul li:nth-child(4) { animation-delay: 0.45s; } /* Adicionado para a 4ª aba (Contato) */
+
+/* CORREÇÃO DO MENU DE NAVEGAÇÃO */
+.site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-nav {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.main-nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 22px !important; /* Espaçamento ajustado para caber os 4 botões perfeitamente */
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
